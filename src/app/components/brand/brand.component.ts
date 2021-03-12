@@ -16,11 +16,18 @@ export class BrandComponent implements OnInit {
   ngOnInit(): void {
     this.getBrands();
   }
-
+ 
   getBrands() {
-    this.brandService.getBrands().subscribe((response) => {
+    this.brandService.getAllBrands().subscribe((response) => {
       this.brands = response.data;
       this.dataLoaded = true;
+      
+    });
+  }
+
+  getBrandById(id:number){
+    this.brandService.getBrandById(id).subscribe((response) => {
+      this.brands = response.data;
     });
   }
 }

@@ -6,7 +6,12 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let brand of brands">
+  <li
+    routerLink="/brand/{{brand.brandId}}"
+    (click)="setCurrentBrand(brand)"
+    [class]="getCurrentBrandClass(brand)"
+    *ngFor="let brand of brands"
+  >
     {{ brand.brandName }}
   </li>
 </ul>

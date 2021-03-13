@@ -10,8 +10,8 @@
     <tr>
       <th>Id</th>
       <th>Marka Adı</th>
-      <th>Model Id</th>
-      <th>Color Id</th>
+      <th>Model Adı</th>
+      <th>Renk</th>
       <th>Model Yılı</th>
       <th>Fiyatı</th>
       <th>Açıklama</th>
@@ -20,11 +20,11 @@
   <tr *ngFor="let car of cars">
     <td>{{ car.id }}</td>
     <td>{{ car.brandName }}</td>
-    <td>{{ car.modelId }}</td>
-    <td>{{ car.colorId }}</td>
+    <td>{{ car.modelName}}</td>
+    <td>{{ car.colorName}}</td>
     <td>{{ car.modelYear }}</td>
     <td>{{ car.price }}</td>
     <td>{{ car.description }}</td>
-    <td></td>
+    
   </tr>
 </table>

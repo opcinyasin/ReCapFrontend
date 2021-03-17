@@ -5,8 +5,17 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
+
+<div class="mb-3">
+  <label for="filterText" class="col-sm-2 col-form-label">Ürün ara</label>
+  <div class="col-sm-10">
+    <input type="text" class="form-control" [(ngModel)]="filterText" placeholder="arama yapın" id="filterText">
+  </div>
+</div>
+  <div class="alert alert-success" *ngIf="filterText"> {{ filterText}} aradınız</div>
+
+  <table *ngIf="dataLoaded == true" class="table">
+    <thead>
     <tr>
       <th>Id</th>
       <th>Marka Adı</th>
@@ -14,17 +23,20 @@
       <th>Renk</th>
       <th>Model Yılı</th>
       <th>Fiyatı</th>
+      <th>Kdv li Fiyat</th>
       <th>Açıklama</th>
+
     </tr>
-  </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.id }}</td>
-    <td>{{ car.brandName }}</td>
-    <td>{{ car.modelName}}</td>
-    <td>{{ car.colorName}}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.price }}</td>
-    <td>{{ car.description }}</td>
-    
-  </tr>
-</table>
+    </thead>
+    <tr *ngFor="let car of cars | filterPipe:filterText">
+      <td>{{ car.id }}</td>
+      <td>{{ car.brandName | uppercase }}</td>
+      <td>{{ car.modelName}}</td>
+      <td>{{ car.colorName}}</td>
+      <td>{{ car.modelYear }}</td>
+      <td>{{ car.price }}</td>
+      <td>{{ car.price | vatAdded:18| currency:"₺" }}</td>
+      <td>{{ car.description }}</td>
+
+    </tr>
+  </table>

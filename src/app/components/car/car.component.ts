@@ -13,6 +13,7 @@ import { CarService } from 'src/app/services/car.service';
 export class CarComponent implements OnInit {
   cars: CarDto[] = [];
   dataLoaded = false;
+  filterText :string="";
 
   constructor(
     private carService: CarService,

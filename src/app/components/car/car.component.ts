@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Car } from 'src/app/models/car';
-import { CarDto } from 'src/app/models/Dtos/carDto';
-import { BrandService } from 'src/app/services/brand.service';
-import { CarService } from 'src/app/services/car.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Car} from 'src/app/models/car';
+import {CarDto} from 'src/app/models/Dtos/carDto';
+import {BrandService} from 'src/app/services/brand.service';
+import {CarService} from 'src/app/services/car.service';
+import {ToastrService} from 'ngx-toastr';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -13,12 +15,15 @@ import { CarService } from 'src/app/services/car.service';
 export class CarComponent implements OnInit {
   cars: CarDto[] = [];
   dataLoaded = false;
-  filterText :string="";
+  filterText: string = '';
 
   constructor(
     private carService: CarService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private cartService:CartService,
+    private toastrService: ToastrService
+  ) {
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -53,8 +58,9 @@ export class CarComponent implements OnInit {
       });
     });
   }
+
   getCarsByBrandId(brandId: number) {
-    this.cars=[];
+    this.cars = [];
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
       //this.cars = response.data;
       this.dataLoaded = true;
@@ -73,7 +79,12 @@ export class CarComponent implements OnInit {
             description: data['description'],
           });
         });
+      });
     });
-  });
+  }
+
+  addToCart(car: CarDto) {
+    this.toastrService.success("Sepete eklendi",car.brandName)
+    this.cartService.addToCart(car);
   }
 }

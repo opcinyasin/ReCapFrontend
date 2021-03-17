@@ -25,18 +25,21 @@
       <th>Fiyatı</th>
       <th>Kdv li Fiyat</th>
       <th>Açıklama</th>
-
+      <th></th>
     </tr>
     </thead>
+    <thead>
     <tr *ngFor="let car of cars | filterPipe:filterText">
       <td>{{ car.id }}</td>
       <td>{{ car.brandName | uppercase }}</td>
       <td>{{ car.modelName}}</td>
       <td>{{ car.colorName}}</td>
       <td>{{ car.modelYear }}</td>
-      <td>{{ car.price }}</td>
+      <td>{{ car.price | vatAdded:0| currency:"₺" }}</td>
       <td>{{ car.price | vatAdded:18| currency:"₺" }}</td>
       <td>{{ car.description }}</td>
-
+      <td><button (click)="addToCart(car)" class="btn btn-success"> Sepete Ekle</button></td>
     </tr>
+    </thead>
+
   </table>

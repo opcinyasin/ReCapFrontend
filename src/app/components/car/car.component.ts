@@ -20,7 +20,7 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private cartService:CartService,
+    private cartService: CartService,
     private toastrService: ToastrService
   ) {
   }
@@ -36,26 +36,9 @@ export class CarComponent implements OnInit {
   }
 
   getCars() {
-    this.carService.getCars().subscribe((response) => {
-      //this.cars = response.data;
+    this.carService.getCarsDetails().subscribe((response) => {
+      this.cars = response.data;
       this.dataLoaded = true;
-
-      response.data.forEach((car) => {
-        this.carService.getCarDetailsById(car.id).subscribe((res) => {
-          let data: any = JSON.stringify(res.data);
-          data = JSON.parse(data);
-
-          this.cars.push({
-            id: data['id'],
-            brandName: data['brandName'],
-            colorName: data['colorName'],
-            modelName: data['modelName'],
-            modelYear: data['modelYear'],
-            price: data['price'],
-            description: data['description'],
-          });
-        });
-      });
     });
   }
 
@@ -84,7 +67,7 @@ export class CarComponent implements OnInit {
   }
 
   addToCart(car: CarDto) {
-    this.toastrService.success("Sepete eklendi",car.brandName)
+    this.toastrService.success('Sepete eklendi', car.brandName);
     this.cartService.addToCart(car);
   }
 }

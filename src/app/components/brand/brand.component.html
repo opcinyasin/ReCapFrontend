@@ -5,7 +5,9 @@
 >
   <span class="visually-hidden">Loading...</span>
 </div>
+
 <ul class="list-group" style="margin-top: 20px;">
+  <li (click)="setCurrentBrand(null)"  [class]="getCurrentBrandClass(null)" routerLink=""> Tüm Araçlar </li>
   <li
     routerLink="/brand/{{brand.brandId}}"
     (click)="setCurrentBrand(brand)"

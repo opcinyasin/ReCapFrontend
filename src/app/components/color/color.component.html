@@ -1,0 +1,17 @@
+<div style="margin-top: 20px" class="accordion accordion-flush" id="accordionExample">
+  <div class="accordion-item">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" routerLink=""
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+      Tüm Renkler
+    </button>
+    <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne"
+         data-bs-parent="#accordionExample">
+      <div class="card" *ngFor="let color of colors" (click)="setCurrentColor(color)"
+           routerLink="/color/{{color.colorId}}">
+        <div class="card-body">
+          {{color.colorName}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

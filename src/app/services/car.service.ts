@@ -5,6 +5,7 @@ import {environment} from '../../environments/environment';
 import {Car} from '../models/car';
 import {CarDto} from '../models/Dtos/carDto';
 import {ListResponseModel} from '../models/listResponseModel';
+import {ResponseModel} from '../models/responseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -42,4 +43,9 @@ export class CarService {
       this.apiUrl + '/getcarsbycolorid?id=' + id
     );
   }
+
+  add(car:Car):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl+"/add",car)
+  }
+
 }

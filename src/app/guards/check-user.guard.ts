@@ -7,8 +7,7 @@ import {ToastrService} from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
-
+export class CheckUserGuard implements CanActivate {
   constructor(private authService: AuthService, private toastrService: ToastrService, private router: Router) {
   }
 
@@ -16,11 +15,13 @@ export class LoginGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.authService.isAuthenticated()) {
-      return true;
-    } else {
-      this.toastrService.error('Sisteme giriş yapmalısınız');
-      this.router.navigate(['login']);
+      this.toastrService.error('Sisteme zaten giriş yaptınız.');
+      this.router.navigate(['']);
       return false;
     }
+    else {
+      return true
+    }
   }
+
 }

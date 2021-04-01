@@ -1,0 +1,32 @@
+<body class="text-center">
+
+<main class="form-register">
+  <form [formGroup]="registerForm">
+    <h2 class="h3 mb-3 fw-normal">Kayıt Ol</h2>
+
+    <div class="form-floating">
+      <input formControlName="firstName" type="text" class="form-control" id="floatingfirstName"
+             placeholder="LastName">
+      <label for="floatingfirstName">Ad</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="lastName" type="text" class="form-control mt-2" id="floatinglastName"
+             placeholder="LastName">
+      <label for="floatinglastName">Soyad</label>
+    </div>
+
+    <div class="form-floating">
+      <input formControlName="email" type="email" class="form-control mt-2" id="floatingInput"
+             placeholder="name@example.com">
+      <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating">
+      <input formControlName="password" type="password" class="form-control mt-2" id="floatingPassword"
+             placeholder="Password">
+      <label for="floatingPassword">Parola</label>
+    </div>
+    <button (click)="register()" class="w-100 btn btn-lg btn-primary mt-2">Kayıt Ol</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+  </form>
+</main>
+</body>

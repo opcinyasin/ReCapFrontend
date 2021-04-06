@@ -19,7 +19,7 @@ export class LoginGuard implements CanActivate {
       return true;
     } else {
       this.toastrService.error('Sisteme giriş yapmalısınız');
-      this.router.navigate(['login']);
+      this.router.navigate(['account/login']);
       return false;
     }
   }

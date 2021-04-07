@@ -47,48 +47,18 @@ export class CarComponent implements OnInit {
   getCarsByBrandId(brandId: number) {
     this.cars = [];
     this.carService.getCarsByBrandId(brandId).subscribe((response) => {
-      //this.cars = response.data;
+      this.cars = response.data;
       this.dataLoaded = true;
-      response.data.forEach((car) => {
-        this.carService.getCarDetailsById(car.id).subscribe((res) => {
-          let data: any = JSON.stringify(res.data);
-          data = JSON.parse(data);
 
-          this.cars.push({
-            id: data['id'],
-            brandName: data['brandName'],
-            colorName: data['colorName'],
-            modelName: data['modelName'],
-            modelYear: data['modelYear'],
-            price: data['price'],
-            description: data['description'],
-          });
-        });
-      });
     });
   }
 
   getCarsByColorId(colorId: number) {
     this.cars = [];
     this.carService.getCarsByColorId(colorId).subscribe((response) => {
-      //this.cars = response.data;
+      this.cars = response.data;
       this.dataLoaded = true;
-      response.data.forEach((car) => {
-        this.carService.getCarDetailsById(car.id).subscribe((res) => {
-          let data: any = JSON.stringify(res.data);
-          data = JSON.parse(data);
 
-          this.cars.push({
-            id: data['id'],
-            brandName: data['brandName'],
-            colorName: data['colorName'],
-            modelName: data['modelName'],
-            modelYear: data['modelYear'],
-            price: data['price'],
-            description: data['description'],
-          });
-        });
-      });
     });
   }
 

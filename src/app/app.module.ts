@@ -15,6 +15,7 @@ import { FilterContentComponent } from './components/filter-content/filter-conte
 import { ColorComponent } from './components/color/color.component';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +23,7 @@ import {AuthInterceptor} from './interceptors/auth.interceptor';
     BrandComponent,
     CartSummaryComponent,
     FilterContentComponent,
-    ColorComponent,
+    ColorComponent
   ],
   imports: [
     BrowserModule,

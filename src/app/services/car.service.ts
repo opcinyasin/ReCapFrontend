@@ -32,14 +32,14 @@ export class CarService {
     );
   }
 
-  getCarsByBrandId(id: number): Observable<ListResponseModel<Car>> {
-    return this.httpClient.get<ListResponseModel<Car>>(
+  getCarsByBrandId(id: number): Observable<ListResponseModel<CarDto>> {
+    return this.httpClient.get<ListResponseModel<CarDto>>(
       this.apiUrl + '/getcarsbybrandid?id=' + id
     );
   }
 
-  getCarsByColorId(id: number): Observable<ListResponseModel<Car>> {
-    return this.httpClient.get<ListResponseModel<Car>>(
+  getCarsByColorId(id: number): Observable<ListResponseModel<CarDto>> {
+    return this.httpClient.get<ListResponseModel<CarDto>>(
       this.apiUrl + '/getcarsbycolorid?id=' + id
     );
   }

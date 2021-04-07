@@ -26,10 +26,9 @@
     </button>
     <div id="flush-collapseOne" class="accordion-collapse collapse " aria-labelledby="flush-headingOne"
          data-bs-parent="#accordionFlushExample">
-      <div class="card" *ngFor="let brand of brands" (click)="setCurrentBrand(brand)"
-           routerLink="/brand/{{brand.brandId}}">
-        <div class="card-body">
-          {{brand.brandName}}
+      <div class="card" *ngFor="let brand of brands" (click)="setCurrentBrand(brand)">
+        <div class="card-body" routerLink="/brand/{{brand.brandId}}">
+          <a >{{brand.brandName}}</a>
         </div>
       </div>
     </div>
